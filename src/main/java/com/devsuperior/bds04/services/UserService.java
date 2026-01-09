@@ -22,7 +22,7 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		List<UserDetailsProjection> result = this.userRepository.searchUserAndRolesByEmail(username);
-		if (result.size() > 0) {
+		if (result.isEmpty()) {
 			throw new UsernameNotFoundException("Usuario não encontrado: " + username);
 		}
 		User user = new User();
