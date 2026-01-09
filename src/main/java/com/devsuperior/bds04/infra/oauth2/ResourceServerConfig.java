@@ -51,10 +51,7 @@ public class ResourceServerConfig {
 		return http.build();
 	}
 	
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+
 
 	@Bean
 	JwtAuthenticationConverter jwtAuthenticationConverter() {
