@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +21,7 @@ public class CityService {
 	
 	@Transactional(readOnly = true)
 	public List<CityDTO> findAll(){
-		List<City> list = repository.findAll();
+		List<City> list = repository.findAll(Sort.by(Order.asc("name")));
 		return list.stream().map(x -> new CityDTO(x)).collect(Collectors.toList());
 	}
 	
